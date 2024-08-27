@@ -4,49 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
-    <ImageView
-        android:id="@+id/sound_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/withsound_icon"
-        android:layout_margin="10dp"
-        />
-    <ImageView
-        android:id="@+id/noSound_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/nosound_icon"
-        android:layout_margin="10dp"
-        android:visibility="invisible"
-        />
+    tools:context=".GameActivity"
+    android:id="@+id/root_element"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/firstPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="You"
+        tools:text="Hend"
+        android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="15dp"
+        style="@style/labelStyle"
+        android:background="@drawable/border_of_textview"
         />
+
     <ImageView
-        android:id="@+id/x"
+        android:id="@+id/x_sympol"
         android:layout_width="30dp"
         android:layout_height="25dp"
-        app:layout_constraintStart_toEndOf="@id/firstPlayer"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/firstPlayer"
+        android:layout_marginLeft="5dp"
         android:src="@drawable/x_icon"
-        android:layout_marginTop="75dp"
-        android:layout_marginLeft="10dp"
-        />
+        android:layout_marginTop="55dp"
+       />
+
     <TextView
         android:id="@+id/score_1"
         android:layout_width="120dp"
@@ -57,54 +45,68 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        style="@style/labelStyle"
+
         />
 
     <TextView
         android:id="@+id/secondPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="x"
-        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toEndOf="@id/x_sympol"
+        android:layout_marginTop="50dp"
         android:textSize="25sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="144dp"
-        tools:text="second" />
+        tools:text="second"
+        android:textAlignment="center"
+        style="@style/labelStyle"
+        android:background="@drawable/border_of_textview"
+        />
 
     <ImageView
         android:id="@+id/o"
         android:layout_width="30dp"
         android:layout_height="25dp"
-        app:layout_constraintStart_toEndOf="@id/secondPlayer"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/secondPlayer"
         android:src="@drawable/o_icon"
-        android:layout_marginTop="75dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="5dp"
         />
 
     <TextView
         android:id="@+id/score_2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/secondPlayer"
-        tools:layout_editor_absoluteX="145dp" />
+        tools:layout_editor_absoluteX="145dp"
+        style="@style/labelStyle"
+
+        />
 
     <TextView
         android:id="@+id/draw"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/border_of_textview"
+        android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/o"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="draw" />
+        android:text="draw"
+        style="@style/labelStyle"
+        />
 
     <ImageView
         android:id="@+id/draw_icon"
@@ -113,8 +115,7 @@
         app:layout_constraintStart_toEndOf="@id/draw"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/draw_icon"
-        android:layout_marginTop="75dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginTop="55dp"
         />
     <TextView
         android:id="@+id/score_draw"
@@ -126,6 +127,9 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        style="@style/labelStyle"
+
         />
     <Button
         android:id="@+id/btn1"
@@ -133,12 +137,15 @@
         android:layout_height="100dp"
         android:textSize="24dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btn4"
         app:layout_constraintEnd_toStartOf="@+id/btn2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/score_1"
         style="@style/button_style"
-        android:backgroundTint="@color/blue"/>
+        android:backgroundTint="@color/blue"
+        android:onClick="onPlayerClick"
+        />
 
     <Button
         android:id="@+id/btn2"
@@ -151,6 +158,10 @@
         app:layout_constraintTop_toBottomOf="@+id/score_1"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+        android:layout_marginRight="8dp"
+
+
         />
 
     <Button
@@ -166,6 +177,9 @@
         app:layout_constraintTop_toBottomOf="@+id/score_2"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+
+
         />
 
     <Button
@@ -182,6 +196,8 @@
         app:layout_constraintTop_toBottomOf="@+id/btn1"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:layout_marginRight="8dp"
+
         />
 
     <Button
@@ -196,6 +212,9 @@
         app:layout_constraintTop_toBottomOf="@+id/btn2"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+        android:layout_marginRight="8dp"
+
         />
 
     <Button
@@ -210,6 +229,8 @@
         app:layout_constraintTop_toBottomOf="@+id/btn3"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+
         />
 
     <Button
@@ -225,6 +246,10 @@
         android:textSize="24dp"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+        android:layout_marginRight="8dp"
+
+
         />
 
     <Button
@@ -239,6 +264,10 @@
         app:layout_constraintTop_toBottomOf="@+id/btn5"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+        android:layout_marginRight="8dp"
+
+
         />
 
     <Button
@@ -253,10 +282,19 @@
         app:layout_constraintTop_toBottomOf="@+id/btn6"
         android:backgroundTint="@color/blue"
         style="@style/button_style"
+        android:onClick="onPlayerClick"
+
         />
 
-
-
+    <ImageView
+        android:id="@+id/exit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/btn8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/img"
+        />
 
 
 
