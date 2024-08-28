@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:text="Tic Tac Toe"
         android:textSize="30sp"
         android:fontFamily="@font/chrustyrock_orla"
@@ -40,17 +40,30 @@
 
     <ImageView
         android:id="@+id/sound_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/withsound_icon"
         android:layout_margin="10dp"
         />
+
+    <ImageView
+        android:id="@+id/language_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/english_icon"
+        android:layout_margin="10dp"
+        />
+
+
+        />
     <ImageView
         android:id="@+id/noSound_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/nosound_icon"
@@ -93,6 +106,43 @@
         android:textSize="22sp"
         android:backgroundTint="@color/blue"
         android:layout_margin="20dp"
+        android:visibility="visible"
+        />
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/chooseYourMode"
+        android:layout_margin="20dp"
+        android:hint="Enter First Name"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        />
+    <EditText
+        android:id="@+id/secondName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/withFriend_btn"
+        android:layout_margin="20dp"
+        android:hint="Enter Second Name"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        />
+    <Button
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintTop_toBottomOf="@id/secondName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Let's Play"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
         />
 
 

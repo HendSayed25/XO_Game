@@ -3,10 +3,13 @@ package com.example.xo_game;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -16,17 +19,15 @@ public class RegisterActivity extends AppCompatActivity {
     EditText name,email,password,confirmPassword;
     Button register_btn;
     UserDatabase db;
+    MediaPlayer media;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        name=findViewById(R.id.Name_register);
-        email=findViewById(R.id.email_register);
-        password=findViewById(R.id.password_register);
-        confirmPassword=findViewById(R.id.confirm_password_register);
-        register_btn=findViewById(R.id.register_btn);
-        db=new UserDatabase(this,UserDatabase.TABLE_USER,null,UserDatabase.DATABASE_VERSION);
+
+        initValues();//set id for objects
+
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,33 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+            //play the sound
+            media = MediaPlayer.create(RegisterActivity.this, R.raw.login_or_register);
+            media.start();
+
+    }
+
+    @Override
+    protected void onStop() { //how stop sound when click to moute it??????
+        super.onStop();
+            //play the sound
+            media.stop();
+    }
+
+    public void initValues(){
+        name=findViewById(R.id.Name_register);
+        email=findViewById(R.id.email_register);
+        password=findViewById(R.id.password_register);
+        confirmPassword=findViewById(R.id.confirm_password_register);
+        register_btn=findViewById(R.id.register_btn);
+        db=new UserDatabase(this,UserDatabase.TABLE_USER,null,UserDatabase.DATABASE_VERSION);
     }
     public boolean Valid(){
         boolean valid=true;
