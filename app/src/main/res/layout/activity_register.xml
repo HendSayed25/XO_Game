@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
+
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:text="Tic Tac Toe"
+        android:text="@string/tic_tac_toe"
         android:textSize="30sp"
         android:fontFamily="@font/chrustyrock_orla"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:hint="Enter Your Name"
+        android:hint="@string/enter_your_name"
         android:layout_margin="5dp"
         />
     <EditText
@@ -55,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:hint="Enter Your Email"
+        android:hint="@string/enter_your_email"
         android:layout_margin="5dp"
         />
     <EditText
@@ -66,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:hint="Enter Your Password"
+        android:hint="@string/enter_your_password"
         android:layout_margin="5dp"
         android:inputType="textPassword"
 
@@ -79,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:hint="Confirm The Password"
+        android:hint="@string/confirm_the_password"
         android:layout_margin="5dp"
         android:inputType="textPassword"
         />
@@ -90,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@id/confirm_password_register"
         android:layout_margin="15dp"
         android:backgroundTint="@color/blue"
-        android:text="Register"
+        android:text="@string/register"
         android:fontFamily="@font/chrustyrock_orla"
         android:textSize="25sp"
         />

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XO_Spiel</string>
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="enter_your_name">Geben Sie Ihren Namen ein</string>
+    <string name="enter_your_email">Geben Sie Ihre E-Mail ein</string>
+    <string name="enter_your_password"> Geben Sie Ihr Passwort ein</string>
+    <string name="confirm_the_password">Bestätigen Sie das Passwort</string>
+    <string name="register"> Registrieren</string>
+    <string name="login">Anmelden</string>
+    <string name="sign_up">Registrieren</string>
+    <string name="choose_your_play_mode"> Wählen Sie Ihren Spielmodus</string>
+    <string name="with_a_friend">Mit einem Freund</string>
+    <string name="with_ai">Mit der KI</string>
+    <string name="enter_first_name">Geben Sie den Vornamen ein</string>
+    <string name="enter_second_name">Geben Sie den zweiten Vornamen ein</string>
+    <string name="let_s_play">Lass uns spielen</string>
+</resources>

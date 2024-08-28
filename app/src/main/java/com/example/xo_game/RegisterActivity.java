@@ -2,13 +2,20 @@ package com.example.xo_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,17 +23,19 @@ public class RegisterActivity extends AppCompatActivity {
     EditText name,email,password,confirmPassword;
     Button register_btn;
     UserDatabase db;
+    MediaPlayer media;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        name=findViewById(R.id.Name_register);
-        email=findViewById(R.id.email_register);
-        password=findViewById(R.id.password_register);
-        confirmPassword=findViewById(R.id.confirm_password_register);
-        register_btn=findViewById(R.id.register_btn);
-        db=new UserDatabase(this,UserDatabase.TABLE_USER,null,UserDatabase.DATABASE_VERSION);
+
+        //set tha language of app
+        String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
+        setLocale(lang);
+
+        initValues();//set id for objects
+
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +53,33 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+            //play the sound
+            media = MediaPlayer.create(RegisterActivity.this, R.raw.login_or_register);
+            media.start();
+
+    }
+
+    @Override
+    protected void onStop() { //how stop sound when click to moute it??????
+        super.onStop();
+            //play the sound
+            media.stop();
+    }
+
+    public void initValues(){
+        name=findViewById(R.id.Name_register);
+        email=findViewById(R.id.email_register);
+        password=findViewById(R.id.password_register);
+        confirmPassword=findViewById(R.id.confirm_password_register);
+        register_btn=findViewById(R.id.register_btn);
+        db=new UserDatabase(this,UserDatabase.TABLE_USER,null,UserDatabase.DATABASE_VERSION);
     }
     public boolean Valid(){
         boolean valid=true;
@@ -71,8 +107,8 @@ public class RegisterActivity extends AppCompatActivity {
             confirmPassword.setError("not match the Password");
             valid=false;
         }
-        if(password.getText().toString().length()<8||(!isValidPassword(password.getText().toString()))){
-            password.setError("please enter strong password not less than 6 numbers,one capital character and special character");
+        if(password.getText().toString().length()<5||(!isValidPassword(password.getText().toString()))){
+            password.setError("please enter password not less than 5 character");
             valid=false;
         }
         if(!email.getText().toString().matches(emailPattern)){
@@ -91,11 +127,27 @@ public class RegisterActivity extends AppCompatActivity {
 
         Pattern pattern;
         Matcher matcher;
-        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{4,}$";
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);
 
         return matcher.matches();
 
     }
+    public void setLocale(String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(config,getApplicationContext().getResources().getDisplayMetrics());
+
+        // Store the language preference
+        SharedPreferenceHelper.saveLanguage(getApplicationContext(),languageCode);
+
+        // Restart the activity to apply the language change
+       /* Intent refresh = new Intent(this, RegisterActivity.class);
+        startActivity(refresh);
+        finish();*/
+    }
+
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"> Gioco XO</string>
+    <string name="tic_tac_toe">Tris</string>
+    <string name="enter_your_name">Inserisci il tuo nome</string>
+    <string name="enter_your_email">Inserisci la tua email</string>
+    <string name="enter_your_password"> Inserisci la tua password</string>
+    <string name="confirm_the_password">Conferma la password</string>
+    <string name="register">Registrati</string>
+    <string name="login">Accedi</string>
+    <string name="sign_up">Iscriviti</string>
+    <string name="choose_your_play_mode">Scegli la modalità di gioco</string>
+    <string name="with_a_friend">Con un amico</string>
+    <string name="with_ai"> Con l\'IA</string>
+    <string name="enter_first_name">Inserisci il primo nome</string>
+    <string name="enter_second_name"> Inserisci il secondo nome</string>
+    <string name="let_s_play"> Giochiamo</string>
+</resources>

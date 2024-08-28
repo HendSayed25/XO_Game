@@ -33,7 +33,7 @@
         android:layout_marginLeft="5dp"
         android:src="@drawable/x_icon"
         android:layout_marginTop="55dp"
-       />
+        />
     <ImageView
         android:id="@+id/sound_btn"
         android:layout_width="30dp"
