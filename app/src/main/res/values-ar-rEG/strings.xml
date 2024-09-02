@@ -16,4 +16,6 @@
     <string name="enter_second_name">أدخل الاسم الأول</string>
     <string name="let_s_play">دعونا نلعب</string>
     <string name="draw">تعادل</string>
+    <string name="You">انت</string>
+    <string name="computer">الجهاز</string>
 </resources>

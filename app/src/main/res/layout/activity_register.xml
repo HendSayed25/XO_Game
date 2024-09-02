@@ -43,7 +43,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="110dp"
         android:text="@string/tic_tac_toe"
         android:textSize="30sp"
         android:fontFamily="@font/chrustyrock_orla"
@@ -70,58 +70,96 @@
         android:src="@drawable/o_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
-    <EditText
-        android:id="@+id/Name_register"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/input_name"
         app:layout_constraintTop_toBottomOf="@id/x_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:hint="@string/enter_your_name"
-        android:layout_margin="5dp"
-        />
-    <EditText
-        android:id="@+id/email_register"
+        android:layout_margin="5dp">
+        <EditText
+            android:id="@+id/Name_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/x_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:hint="@string/enter_your_name"
+            android:layout_margin="5dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Name_register"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:hint="@string/enter_your_email"
-        android:layout_margin="5dp"
-        />
+        android:id="@+id/input_email"
+        app:layout_constraintTop_toBottomOf="@id/input_name"
+        android:layout_margin="5dp">
+        <EditText
+            android:id="@+id/email_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Name_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:hint="@string/enter_your_email"
+            android:layout_margin="5dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/input_email"
+    app:endIconMode="password_toggle"
+    android:id="@+id/input_pass"
+    android:layout_margin="5dp">
+
     <EditText
         android:id="@+id/password_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/email_register"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:hint="@string/enter_your_password"
-        android:layout_margin="5dp"
-        android:inputType="textPassword"
+        android:layout_margin="5dp"/>
 
-        />
-    <EditText
-        android:id="@+id/confirm_password_register"
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/password_register"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:hint="@string/confirm_the_password"
-        android:layout_margin="5dp"
-        android:inputType="textPassword"
-        />
+        app:layout_constraintTop_toBottomOf="@id/input_pass"
+        app:endIconMode="password_toggle"
+        android:id="@+id/input_confirm"
+        android:layout_margin="5dp">
+        <EditText
+            android:id="@+id/confirm_password_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/password_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:hint="@string/confirm_the_password"
+            android:layout_margin="5dp"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/confirm_password_register"
+        app:layout_constraintTop_toBottomOf="@id/input_confirm"
         android:layout_margin="15dp"
         android:backgroundTint="@color/blue"
         android:text="@string/register"
@@ -137,7 +175,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/back"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
 
         />
 

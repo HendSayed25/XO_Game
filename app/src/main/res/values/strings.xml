@@ -10,9 +10,11 @@
     <string name="sign_up">Sign Up</string>
     <string name="choose_your_play_mode">Choose Your Play Mode</string>
     <string name="with_a_friend">With a Friend</string>
-    <string name="with_ai">With Ai</string>
+    <string name="with_ai">With AI</string>
     <string name="enter_first_name">Enter First Name</string>
     <string name="enter_second_name">Enter Second Name</string>
     <string name="let_s_play">Let\'s Play</string>
     <string name="draw">draw</string>
+    <string name="You">You</string>
+    <string name="computer">Computer</string>
 </resources>

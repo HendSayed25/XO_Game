@@ -62,6 +62,7 @@ public class GameActivity extends AppCompatActivity {
         player2.setText(getIntent().getStringExtra("secondName"));
         withAi=getIntent().getBooleanExtra("Ai",false);
 
+
         //initialize the buttons at the beginning of game or when someone won or draw
         initBoardState();
 
@@ -146,7 +147,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     public void onPlayerClick(View v) {
-        if(sound) {
+        if(sound_icon.getVisibility()==View.VISIBLE) {
             //play the sound
             media = MediaPlayer.create(GameActivity.this, R.raw.click);
             media.start();

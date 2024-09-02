@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.XO_Game"
         tools:targetApi="31" >
-        <activity
-            android:name=".GameActivity_withAI"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

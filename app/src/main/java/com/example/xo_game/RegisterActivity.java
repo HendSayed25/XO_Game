@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button register_btn;
     UserDatabase db;
     MediaPlayer media;
-    Boolean sound;
+    Boolean sound=true;
     ImageView sound_icon,noSound_icon,language_icon,back_icon;
     String []languages={"English","Arabic","German","French","Italiano"};
 
@@ -125,12 +125,12 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(sound) {
+       if(sound) {
             //play the sound
-            media.start();
-            media = MediaPlayer.create(RegisterActivity.this, R.raw.login_or_register);
-            media.isLooping();
-        }
+             media = MediaPlayer.create(RegisterActivity.this, R.raw.login_or_register);
+             media.start();
+             media.setLooping(true);
+       }
 
     }
 

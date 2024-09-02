@@ -16,4 +16,6 @@
     <string name="enter_second_name">Entrez le deuxième prénom</string>
     <string name="let_s_play"> Jouons</string>
     <string name="draw">match nul</string>
+    <string name="You">Vous</string>
+    <string name="computer">Computer</string>
 </resources>

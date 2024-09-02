@@ -16,4 +16,6 @@
     <string name="enter_second_name">Geben Sie den zweiten Vornamen ein</string>
     <string name="let_s_play">Lass uns spielen</string>
     <string name="draw">Unentschieden</string>
+    <string name="You">Du</string>
+    <string name="computer">Computer</string>
 </resources>

@@ -16,4 +16,6 @@
     <string name="enter_second_name"> Inserisci il secondo nome</string>
     <string name="let_s_play"> Giochiamo</string>
     <string name="draw">pareggio</string>
+    <string name="You">Tu</string>
+    <string name="computer">Computer</string>
 </resources>

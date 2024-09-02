@@ -117,34 +117,51 @@
         android:layout_margin="20dp"
         android:visibility="visible"
         />
-    <EditText
-        android:id="@+id/firstName"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/chooseYourMode"
-        android:layout_margin="20dp"
-        android:hint="@string/enter_first_name"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        />
-    <EditText
-        android:id="@+id/secondName"
+        android:id="@+id/input_firstName"
+        android:visibility="invisible">
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/chooseYourMode"
+            android:layout_margin="20dp"
+            android:hint="@string/enter_first_name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/withFriend_btn"
-        android:layout_margin="20dp"
-        android:hint="@string/enter_second_name"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        />
+        app:layout_constraintTop_toBottomOf="@id/input_firstName"
+        android:id="@+id/input_seconName"
+        android:visibility="invisible">
+        <EditText
+            android:id="@+id/secondName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/withFriend_btn"
+            android:layout_margin="20dp"
+            android:hint="@string/enter_second_name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/play_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue"
-        app:layout_constraintTop_toBottomOf="@id/secondName"
+        app:layout_constraintTop_toBottomOf="@id/input_seconName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/let_s_play"

@@ -13,10 +13,13 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     Button withFriend_btn,withAi_btn,play_btn;
+    TextInputLayout firstNameInput,secondNameInput;
     EditText firstName,secondName;
     MediaPlayer media;
     ImageView sound_icon,noSound_icon,language_icon,back_icon;
@@ -56,6 +59,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 withAi_btn.setVisibility(View.INVISIBLE);
                 withFriend_btn.setVisibility(View.INVISIBLE);
+                firstNameInput.setVisibility(View.VISIBLE);
+                secondNameInput.setVisibility(View.VISIBLE);
                 firstName.setVisibility(View.VISIBLE);
                 secondName.setVisibility(View.VISIBLE);
                 play_btn.setVisibility(View.VISIBLE);
@@ -92,8 +97,33 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 Intent i=new Intent(HomeActivity.this, GameActivity.class);
-                i.putExtra("firstName", "You");
-                i.putExtra("secondName", "Computer");
+
+                String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
+                switch (lang) {
+                    case "fr":
+                        i.putExtra("firstName", "Vous");
+                        i.putExtra("secondName", "Computer");
+                        break;
+                    case "de":
+                        i.putExtra("firstName", "Du");
+                        i.putExtra("secondName", "Computer");
+                        break;
+                    case "ar":
+                        i.putExtra("firstName", "انت");
+                        i.putExtra("secondName", "الجهاز");
+                        break;
+                    case "it":
+                        i.putExtra("firstName", "Tu");
+                        i.putExtra("secondName", "Computer");
+                        break;
+                    default:
+                        // Default to English
+                        i.putExtra("firstName", "You");
+                        i.putExtra("secondName", "Computer");
+                        break;
+                }
+
+
                 i.putExtra("Ai",true);
                 startActivity(i);
             }
@@ -158,6 +188,8 @@ public class HomeActivity extends AppCompatActivity {
         play_btn=findViewById(R.id.play_btn);
         firstName=findViewById(R.id.firstName);
         secondName = findViewById(R.id.secondName);
+        firstNameInput=findViewById(R.id.input_firstName);
+        secondNameInput=findViewById(R.id.input_seconName);
         sound_icon=findViewById(R.id.sound_btn);
         noSound_icon=findViewById(R.id.noSound_btn);
         language_icon=findViewById(R.id.language_icon);
