@@ -58,8 +58,6 @@
         android:layout_margin="10dp"
         />
 
-
-        />
     <ImageView
         android:id="@+id/noSound_btn"
         android:layout_width="30dp"
@@ -69,6 +67,17 @@
         android:src="@drawable/nosound_icon"
         android:layout_margin="10dp"
         android:visibility="invisible"
+        />
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/back"
+        android:layout_margin="10dp"
+
         />
 
     <TextView

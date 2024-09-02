@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity_pVSP"
+    tools:context=".GameActivity"
     android:id="@+id/root_element"
     android:background="@color/white">
 
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toEndOf="@id/firstPlayer"
         android:layout_marginLeft="5dp"
         android:src="@drawable/x_icon"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="58dp"
        />
     <ImageView
         android:id="@+id/sound_btn"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/secondPlayer"
         android:src="@drawable/o_icon"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="58dp"
         android:layout_marginLeft="5dp"
         />
 
@@ -135,7 +135,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/o"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="draw"
+        android:text="@string/draw"
         style="@style/labelStyle"
         />
 
@@ -146,7 +146,7 @@
         app:layout_constraintStart_toEndOf="@id/draw"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/draw_icon"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="58dp"
         />
 
     <TextView
@@ -319,13 +319,15 @@
         />
 
     <ImageView
-        android:id="@+id/exit"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/btn8"
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/img"
+        android:src="@drawable/back"
+        android:layout_margin="10dp"
+
         />
 
 

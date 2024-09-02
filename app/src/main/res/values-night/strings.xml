@@ -14,4 +14,5 @@
     <string name="enter_first_name">Enter First Name</string>
     <string name="enter_second_name">Enter Second Name</string>
     <string name="let_s_play">Let\'s Play</string>
+    <string name="draw">draw</string>
 </resources>

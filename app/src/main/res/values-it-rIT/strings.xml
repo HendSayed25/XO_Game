@@ -15,4 +15,5 @@
     <string name="enter_first_name">Inserisci il primo nome</string>
     <string name="enter_second_name"> Inserisci il secondo nome</string>
     <string name="let_s_play"> Giochiamo</string>
+    <string name="draw">pareggio</string>
 </resources>

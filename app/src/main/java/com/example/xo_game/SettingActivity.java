@@ -31,7 +31,10 @@ public class SettingActivity extends AppCompatActivity {
         language_icon=findViewById(R.id.language_icon);
 
 
-       // getTheIconAndLanguage();
+        getTheIconAndLanguage();
+
+
+
 
         sound_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,5 +174,6 @@ public class SettingActivity extends AppCompatActivity {
 
                 break;
         }
+
     }
 }

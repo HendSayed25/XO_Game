@@ -2,9 +2,7 @@ package com.example.xo_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,21 +19,31 @@ public class HomeActivity extends AppCompatActivity {
     Button withFriend_btn,withAi_btn,play_btn;
     EditText firstName,secondName;
     MediaPlayer media;
-    ImageView sound_icon,noSound_icon,language_icon;
+    ImageView sound_icon,noSound_icon,language_icon,back_icon;
     String []languages={"English","Arabic","German","French","Italiano"};
-    Boolean sound;
+    Boolean sound=true;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        initValues();//set the id for objects
+
         //set tha language of app
         String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
-        sound=SharedPreferenceHelper.getSoundMode(getApplicationContext());
-        setLocale(lang);
+        getIconAndLanguage(lang);
+        //set the mode of sound
+       sound=SharedPreferenceHelper.getSoundMode(getApplicationContext());
+        if(sound){
+            sound_icon.setVisibility(View.VISIBLE);
+            noSound_icon.setVisibility(View.INVISIBLE);
+        }else{
+            sound_icon.setVisibility(View.INVISIBLE);
+            noSound_icon.setVisibility(View.VISIBLE);
+        }
 
-        initValues();//set the id for objects
+
 
         withFriend_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
 
                         if(valid()){
-                            Intent i = new Intent(HomeActivity.this, GameActivity_pVSP.class);
+                            Intent i = new Intent(HomeActivity.this, GameActivity.class);
                             i.putExtra("firstName", firstName.getText().toString());
                             i.putExtra("secondName", secondName.getText().toString());
                             i.putExtra("Ai",false);
@@ -83,7 +91,7 @@ public class HomeActivity extends AppCompatActivity {
                     media.start();
                 }
 
-                Intent i=new Intent(HomeActivity.this, GameActivity_pVSP.class);
+                Intent i=new Intent(HomeActivity.this, GameActivity.class);
                 i.putExtra("firstName", "You");
                 i.putExtra("secondName", "Computer");
                 i.putExtra("Ai",true);
@@ -133,6 +141,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        back_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }
@@ -145,6 +161,7 @@ public class HomeActivity extends AppCompatActivity {
         sound_icon=findViewById(R.id.sound_btn);
         noSound_icon=findViewById(R.id.noSound_btn);
         language_icon=findViewById(R.id.language_icon);
+        back_icon=findViewById(R.id.back_icon);
     }
     public Boolean valid(){
         boolean ok=true;
@@ -171,25 +188,18 @@ public class HomeActivity extends AppCompatActivity {
             switch (selectedLanguage) {
                 case "French":
                     setLocale("fr");
-                    language_icon.setImageResource(R.drawable.french_icon);
                     break;
                 case "German":
                     setLocale("de");
-                    language_icon.setImageResource(R.drawable.german_icon);
                     break;
                 case "Arabic":
                     setLocale("ar");
-                    language_icon.setImageResource(R.drawable.arabic_icon);
-
                     break;
                 case "Italiano":
                     setLocale("it");
-                    language_icon.setImageResource(R.drawable.italy_icon);
                     break;
                 default:
                     setLocale("en"); // Default to English
-                    language_icon.setImageResource(R.drawable.english_icon);
-
                     break;
             }
             return true;
@@ -197,18 +207,67 @@ public class HomeActivity extends AppCompatActivity {
 
         popupMenu.show();
     }
+    public void getIconAndLanguage(String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getApplicationContext().getResources().updateConfiguration(config,getApplicationContext().getResources().getDisplayMetrics());
+
+
+        //change the icon of language
+        switch (languageCode) {
+            case "fr":
+                language_icon.setImageResource(R.drawable.french_icon);
+                break;
+            case "de":
+                language_icon.setImageResource(R.drawable.german_icon);
+                break;
+            case "ar":
+                language_icon.setImageResource(R.drawable.arabic_icon);
+                break;
+            case "it":
+                language_icon.setImageResource(R.drawable.italy_icon);
+                break;
+            default:
+                // Default to English
+                language_icon.setImageResource(R.drawable.english_icon);
+                break;
+        }
+
+    }
     public void setLocale(String languageCode) {
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
         getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
-        // Store the language preference
-        SharedPreferenceHelper.saveLanguage(getBaseContext(),languageCode);
 
-        // Restart the activity to apply the language change
-       // Intent refresh =getIntent();
-        //startActivity(refresh);
-        //finish();
+        // Store the language preference
+        SharedPreferenceHelper.saveLanguage(getApplicationContext(),languageCode);
+
+        //change the icon of language
+        switch (languageCode) {
+            case "fr":
+                language_icon.setImageResource(R.drawable.french_icon);
+                break;
+            case "de":
+                language_icon.setImageResource(R.drawable.german_icon);
+                break;
+            case "ar":
+                language_icon.setImageResource(R.drawable.arabic_icon);
+                break;
+            case "it":
+                language_icon.setImageResource(R.drawable.italy_icon);
+                break;
+            default:
+                // Default to English
+                language_icon.setImageResource(R.drawable.english_icon);
+                break;
+        }
+        //restart the activity
+        Intent i=getIntent();
+        startActivity(i);
+
     }
 }

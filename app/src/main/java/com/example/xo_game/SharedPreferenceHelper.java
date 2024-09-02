@@ -1,6 +1,7 @@
 package com.example.xo_game;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 public class SharedPreferenceHelper {
@@ -16,6 +17,7 @@ public class SharedPreferenceHelper {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(LANGUAGE_PREF_KEY, language);
         editor.apply();
+
     }
 
     // Method to get the saved language, defaulting to "en"
