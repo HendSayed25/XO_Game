@@ -23,9 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     Button Login,SignUp;
     UserDatabase db;
     TextView set_Error;
-    SharedPreferences sp;
-    Boolean check;
-    ImageView sound_icon,noSound_icon,language_icon,setting_icon;
+    ImageView sound_icon,noSound_icon,language_icon;
     String []languages={"English","Arabic","German","French","Italiano"};
     MediaPlayer media;
     Boolean sound=true;

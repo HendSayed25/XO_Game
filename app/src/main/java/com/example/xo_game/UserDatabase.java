@@ -38,31 +38,8 @@ public class UserDatabase extends SQLiteOpenHelper {
 
         return res!=-1;
     }
-    public boolean updateUser(User user){
-        SQLiteDatabase db=getWritableDatabase();
-        ContentValues values=new ContentValues();
-        values.put("name",user.getName());
-        long res=db.update(TABLE_USER,values,"phone=?",new String[]{user.getName()});
 
-        return res!=-1;
-    }
 
-    public ArrayList<User> retrieveAllData(){
-        ArrayList<User>users=new ArrayList<>();
-        SQLiteDatabase db=getReadableDatabase();
-        Cursor c=db.rawQuery("select * from "+TABLE_USER,null);
-
-        if(c!=null&&c.moveToFirst()){
-            do{
-                String name=c.getString(0);
-                String password=c.getString(1);
-                String email=c.getString(2);
-                users.add(new User(name,email,password));
-            }while(c.moveToNext());
-        }
-        c.close();
-        return users;
-    }
     public Boolean CheckEmailAndPassword(String Email,String Password){
         SQLiteDatabase db=getReadableDatabase();
         Cursor c=db.rawQuery("select * from user where email=? and password=?",new String[]{Email,Password});

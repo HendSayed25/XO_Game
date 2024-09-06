@@ -27,21 +27,5 @@ public class SplashActivity extends AppCompatActivity {
             }
         },2000);
     }
-    public void setLocale(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
-        // Store the language preference
-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", languageCode);
-        editor.apply();
 
-        // Restart the activity to apply the language change
-       /* Intent refresh =getIntent();
-        startActivity(refresh);
-        finish();*/
-
-    }
 }
