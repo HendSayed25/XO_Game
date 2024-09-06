@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //set tha language of app
         String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
-        getIconAndLanguage(lang);
+        setLocale(lang);
         //set the mode of sound
        sound=SharedPreferenceHelper.getSoundMode(getApplicationContext());
         if(sound){
@@ -171,13 +171,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        back_icon.setOnClickListener(new View.OnClickListener() {
+      /*  back_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
 
@@ -193,7 +193,7 @@ public class HomeActivity extends AppCompatActivity {
         sound_icon=findViewById(R.id.sound_btn);
         noSound_icon=findViewById(R.id.noSound_btn);
         language_icon=findViewById(R.id.language_icon);
-        back_icon=findViewById(R.id.back_icon);
+        back_icon=findViewById(R.id.exit_icon);
     }
     public Boolean valid(){
         boolean ok=true;
@@ -234,39 +234,11 @@ public class HomeActivity extends AppCompatActivity {
                     setLocale("en"); // Default to English
                     break;
             }
+            recreate();
             return true;
         });
 
         popupMenu.show();
-    }
-    public void getIconAndLanguage(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getApplicationContext().getResources().updateConfiguration(config,getApplicationContext().getResources().getDisplayMetrics());
-
-
-        //change the icon of language
-        switch (languageCode) {
-            case "fr":
-                language_icon.setImageResource(R.drawable.french_icon);
-                break;
-            case "de":
-                language_icon.setImageResource(R.drawable.german_icon);
-                break;
-            case "ar":
-                language_icon.setImageResource(R.drawable.arabic_icon);
-                break;
-            case "it":
-                language_icon.setImageResource(R.drawable.italy_icon);
-                break;
-            default:
-                // Default to English
-                language_icon.setImageResource(R.drawable.english_icon);
-                break;
-        }
-
     }
     public void setLocale(String languageCode) {
         Locale locale = new Locale(languageCode);
@@ -297,9 +269,7 @@ public class HomeActivity extends AppCompatActivity {
                 language_icon.setImageResource(R.drawable.english_icon);
                 break;
         }
-        //restart the activity
-        Intent i=getIntent();
-        startActivity(i);
+
 
     }
 }

@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
     String playerSympol;
     Boolean withAi;
     MediaPlayer media;
-    ImageView sound_icon,noSound_icon,language_icon,back_icon;
+    ImageView sound_icon,noSound_icon,language_icon, exit_icon;
     String []languages={"English","Arabic","German","French","Italiano"};
     Boolean sound=true;
 
@@ -41,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
 
         //set tha language of app
         String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
-        getIconAndLanguage(lang);
+        setLocale(lang);
 
         //set the mode of sound
         sound=SharedPreferenceHelper.getSoundMode(getApplicationContext());
@@ -106,7 +106,7 @@ public class GameActivity extends AppCompatActivity {
                 showLanguagePopupMenu(v);
             }
         });
-        back_icon.setOnClickListener(new View.OnClickListener() {
+        exit_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(GameActivity.this, HomeActivity.class);
@@ -126,7 +126,7 @@ public class GameActivity extends AppCompatActivity {
         sound_icon=findViewById(R.id.sound_btn);
         noSound_icon=findViewById(R.id.noSound_btn);
         language_icon=findViewById(R.id.language_icon);
-        back_icon=findViewById(R.id.back_icon);
+        exit_icon =findViewById(R.id.exit_icon);
         rootElement=findViewById(R.id.root_element);//this contains all elements in the xml , will use it for buttons
 
     }
@@ -305,7 +305,7 @@ public class GameActivity extends AppCompatActivity {
                     counter = 0;
                     playerSympol = "";
                     if (sound) {
-                        media = MediaPlayer.create(GameActivity.this, R.raw.win_sound);
+                        media = MediaPlayer.create(GameActivity.this, R.raw.draw_sound);
                         media.start();
                     }
                     initBoardState();
@@ -418,6 +418,7 @@ public class GameActivity extends AppCompatActivity {
                     setLocale("en"); // Default to English
                     break;
             }
+            recreate();
             return true;
         });
 
@@ -453,43 +454,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
-        // Restart the activity to apply the language change
-        Intent refresh =getIntent();
-        finish();
-        startActivity(refresh);
-
-
     }
-    public void getIconAndLanguage(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getApplicationContext().getResources().updateConfiguration(config,getApplicationContext().getResources().getDisplayMetrics());
-
-
-        //change the icon of language
-        switch (languageCode) {
-            case "fr":
-                language_icon.setImageResource(R.drawable.french_icon);
-                break;
-            case "de":
-                language_icon.setImageResource(R.drawable.german_icon);
-                break;
-            case "ar":
-                language_icon.setImageResource(R.drawable.arabic_icon);
-                break;
-            case "it":
-                language_icon.setImageResource(R.drawable.italy_icon);
-                break;
-            default:
-                // Default to English
-                language_icon.setImageResource(R.drawable.english_icon);
-                break;
-        }
-
-    }
-
 
 
 }

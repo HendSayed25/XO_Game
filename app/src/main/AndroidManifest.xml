@@ -20,9 +20,6 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
-            android:exported="false" />
-        <activity
             android:name=".GameActivity"
             android:exported="false" />
         <activity
@@ -37,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".MyService"/>
     </application>
 
 </manifest>

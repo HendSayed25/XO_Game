@@ -2,9 +2,7 @@ package com.example.xo_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -40,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         //set tha language of app
         String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
         sound=SharedPreferenceHelper.getSoundMode(getBaseContext());
-        getIconAndLanguage(lang);
+        setLocale(lang);
 
 
         //set the mode of sound
@@ -48,10 +46,15 @@ public class RegisterActivity extends AppCompatActivity {
         if(sound){
             sound_icon.setVisibility(View.VISIBLE);
             noSound_icon.setVisibility(View.INVISIBLE);
+            //open the sound of background
+            musicAtBackground("START");
         }else{
             sound_icon.setVisibility(View.INVISIBLE);
             noSound_icon.setVisibility(View.VISIBLE);
+            //close the sound of background
+            musicAtBackground("STOP");
         }
+
 
 
         register_btn.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        sound_icon.setOnClickListener(new View.OnClickListener() {
+        sound_icon.setOnClickListener(new View.OnClickListener() { //close the sound
             @Override
             public void onClick(View v) {
                 //play the sound
@@ -82,10 +85,14 @@ public class RegisterActivity extends AppCompatActivity {
                 SharedPreferenceHelper.saveSoundMode(getApplicationContext(),false);
                 sound=false;
 
+                //close the sound of background
+                musicAtBackground("STOP");
+
+
             }
         });
 
-        noSound_icon.setOnClickListener(new View.OnClickListener() {
+        noSound_icon.setOnClickListener(new View.OnClickListener() {//open the sound again
             @Override
             public void onClick(View v) {
                 sound_icon.setVisibility(View.VISIBLE);
@@ -94,6 +101,8 @@ public class RegisterActivity extends AppCompatActivity {
                 SharedPreferenceHelper.saveSoundMode(getApplicationContext(),true);
                 sound=true;
 
+                //open the music at background
+                musicAtBackground("START");
 
             }
         });
@@ -121,24 +130,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-
     @Override
-    protected void onResume() {
-        super.onResume();
-       if(sound) {
-            //play the sound
-             media = MediaPlayer.create(RegisterActivity.this, R.raw.login_or_register);
-             media.start();
-             media.setLooping(true);
-       }
-
-    }
-
-    @Override
-    protected void onStop() { //how stop sound when click to mute it??????
+    protected void onStop() {
         super.onStop();
-            //play the sound
-            media.stop();
+        musicAtBackground("STOP");
     }
 
     public void initValues(){
@@ -150,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
         sound_icon=findViewById(R.id.sound_btn);
         noSound_icon=findViewById(R.id.noSound_btn);
         language_icon=findViewById(R.id.language_icon);
-        back_icon=findViewById(R.id.back_icon);
+        back_icon=findViewById(R.id.exit_icon);
         db=new UserDatabase(this,UserDatabase.TABLE_USER,null,UserDatabase.DATABASE_VERSION);
     }
     public void showLanguagePopupMenu(View v){
@@ -180,6 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
                     setLocale("en"); // Default to English
                     break;
             }
+            recreate();
             return true;
         });
 
@@ -268,39 +264,13 @@ public class RegisterActivity extends AppCompatActivity {
                 break;
         }
 
-        // Restart the activity to apply the language change
-        Intent refresh =getIntent();
-        finish();
-        startActivity(refresh);
-
-
     }
-    public void getIconAndLanguage(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getApplicationContext().getResources().updateConfiguration(config,getApplicationContext().getResources().getDisplayMetrics());
 
-        //change the icon of language
-        switch (languageCode) {
-            case "fr":
-                language_icon.setImageResource(R.drawable.french_icon);
-                break;
-            case "de":
-                language_icon.setImageResource(R.drawable.german_icon);
-                break;
-            case "ar":
-                language_icon.setImageResource(R.drawable.arabic_icon);
-                break;
-            case "it":
-                language_icon.setImageResource(R.drawable.italy_icon);
-                break;
-            default:
-                // Default to English
-                language_icon.setImageResource(R.drawable.english_icon);
-                break;
-        }
+    private void musicAtBackground(String action){
+
+        Intent i=new Intent(RegisterActivity.this,MyService.class);
+        i.setAction(action);
+        startService(i);
 
     }
 

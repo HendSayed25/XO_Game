@@ -68,8 +68,8 @@
         android:layout_margin="10dp"
         android:visibility="invisible"
         />
-    <ImageView
-        android:id="@+id/back_icon"
+   <!-- <ImageView
+        android:id="@+id/exit_icon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +78,7 @@
         android:src="@drawable/back"
         android:layout_margin="10dp"
 
-        />
+        />-->
 
     <TextView
         android:id="@+id/chooseYourMode"

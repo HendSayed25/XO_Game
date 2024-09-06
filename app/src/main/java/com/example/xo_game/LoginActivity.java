@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     MediaPlayer media;
     Boolean sound=true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
         //set tha language of app
         String lang=SharedPreferenceHelper.getLanguage(getApplicationContext());
-        getIconAndLangauge(lang);
+        setLocale(lang);
+        // getIconAndLangauge(lang);
 
         //set the mode of sound
         sound=SharedPreferenceHelper.getSoundMode(getApplicationContext());
@@ -48,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
             sound_icon.setVisibility(View.INVISIBLE);
             noSound_icon.setVisibility(View.VISIBLE);
         }
+
+
 
 
         Login.setOnClickListener(new View.OnClickListener() {
@@ -183,39 +187,13 @@ public class LoginActivity extends AppCompatActivity {
                     setLocale("en"); // Default to English
                     break;
             }
+            recreate();//recreate the activity
             return true;
         });
 
         popupMenu.show();
     }
 
-    public void getIconAndLangauge(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getApplicationContext().getResources().updateConfiguration(config,getApplicationContext().getResources().getDisplayMetrics());
-
-        //change the icon of language
-        switch (languageCode) {
-            case "fr":
-                language_icon.setImageResource(R.drawable.french_icon);
-                break;
-            case "de":
-                language_icon.setImageResource(R.drawable.german_icon);
-                break;
-            case "ar":
-                language_icon.setImageResource(R.drawable.arabic_icon);
-                break;
-            case "it":
-                language_icon.setImageResource(R.drawable.italy_icon);
-                break;
-            default:
-                // Default to English
-                language_icon.setImageResource(R.drawable.english_icon);
-                break;
-        }
-    }
     public void setLocale(String languageCode) {
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
@@ -247,9 +225,9 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Restart the activity to apply the language change
-        Intent refresh =getIntent();
+       /* Intent refresh =getIntent();
         finish();
-        startActivity(refresh);
+        startActivity(refresh);*/
 
     }
 }
